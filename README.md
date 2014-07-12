@@ -1,2 +1,0 @@
-MSDA-Programming-Bridge
-=======================
