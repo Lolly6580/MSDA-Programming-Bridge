@@ -1,0 +1,57 @@
+---
+title: "Week8Quiz"
+author: "Lara Burford"
+date: "Tuesday, July 22, 2014"
+output: html_document
+---
+
+
+
+```{r Question 1, for loop}
+v1 <- c(1,2,3,4,5)
+v2 <- c(6,7,8,9,10)
+v3 <- c()
+for(i in 1:5)
+  {
+    v3[i] <- v1[i] + v2[i]
+  }
+v3
+```
+Obviously, vector addition produces the same result as the for loop in just a single line of code which saves time.  This would save a significant amount of time when dealing with large vectors since a loop does the addition calculation one element at a time.  The Vector addition I believe does all of the calculations at once.
+
+```{r Question 2, while loop}
+v1 <- c("heads", "heads","heads","heads", "tails","heads")
+x <- 1
+count <- 0
+
+while(v1[x] != "tails")
+  {
+    count <- count + 1 
+  
+    if(v1[x] == "tails")
+      break
+    
+    x <- x + 1
+    
+  }
+x
+count
+```
+
+```{r Question 3, for loop with ifelse}
+total <- 0
+
+for (i in 1:100)
+  {
+    ifelse(i%%2 == 1,total <- total + i, total <- total)
+  }
+total
+
+```
+
+```{r Question 3, bonus, no loop}
+
+integers <- seq(1,99,2)
+sum(integers)
+
+```
