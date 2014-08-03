@@ -1,0 +1,88 @@
+---
+title: "Week9Math"
+author: "Lara Burford"
+date: "Tuesday, July 29, 2014"
+output: html_document
+---
+
+
+```{r - Determinant function}
+
+K <- matrix(c(4,3,6,8),2)
+
+L <- matrix(c(6,4,2,1,-2,8,1,5,7),3)
+
+M <- matrix(c(2,2,7,12,5,2,1,6,9,2,11,12,13,8,6,16),nrow = 4)
+
+determinantFunction <- function(M)
+  {
+    dimensions <- c(dim(M))
+        
+    if(dimensions[1] != dimensions[2])
+      {
+        print("Matrix must be square.")
+      }
+    else if(dimensions[1] == 2)
+      {
+        determinant <- (M[1,1]*M[2,2])-(M[1,2]*M[2,1])
+        
+      }
+    else
+      {
+        
+        row <- nrow(M)
+        det <- 0
+        
+        for(i in row:1)
+          {
+            coE <- M[1,i]
+            M2 <- M[-1,-i]
+            detM2 <- determinantFunction(M2)
+            coEdetM2 <- coE * detM2
+            mod <- i %% 2 
+                        
+            if(mod == 1)
+            {
+              det <- det + coEdetM2              
+            }
+            else
+            {
+              det <- det - coEdetM2              
+            }
+          }
+        
+        determinant <- det
+        
+      }
+    return(determinant)
+  }
+
+determinantFunction(K)
+determinantFunction(L)
+determinantFunction(M)
+```
+
+```{r - sign function}
+
+N <- c(-6,0,2,1,-2,8,1,-5,7)
+
+signFunction <- function(M)
+  {
+    signs <- c(1:length(N))
+        
+    for(i in 1:length(N))
+      {
+        if(N[i] == 0)
+          signs[i] = 0
+        else if(N[i] < 0)
+          signs[i] = -1
+        else
+          signs[i] = 1         
+      }
+    return(signs)
+  }
+
+signFunction(N)
+
+```
+
